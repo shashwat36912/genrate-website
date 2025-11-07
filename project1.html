@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Brand Website Builder</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(to right, #f9fafb, #f3f4f6);
+        color: #1f2937;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 95%;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 40px 24px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: #111827;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 6px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="url"],
+      input[type="tel"],
+      textarea,
+      input[type="file"] {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #4caf50;
+        outline: none;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .themes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 8px;
+      }
+
+      .themes label {
+        background-color: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 10px 14px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .themes label:hover {
+        background-color: #e5e7eb;
+      }
+
+      button {
+        margin-top: 30px;
+        background-color: #ef4444;
+        color: white;
+        font-weight: 600;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        width: 100%;
+        font-size: 1rem;
+      }
+
+      button:hover {
+        background-color: #dc2626;
+      }
+
+      .social-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 24px 16px;
+        }
+        h1 {
+          font-size: 1.6rem;
+        }
+        button {
+          font-size: 0.95rem;
+        }
+      }
+
+      /* Popup Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 0;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 900px;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-header {
+        padding: 16px 24px;
+        background-color: #ef4444;
+        color: #fff;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+
+      .modal-header button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .modal-body {
+        flex: 1;
+        /* Remove overflow scroll */
+        overflow: hidden;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🌐 Professional Brand Website Builder</h1>
+      <form id="siteForm">
+        <label>Brand / Business Name</label>
+        <input
+          type="text"
+          id="brandName"
+          placeholder="Enter your brand or company name"
+          required
+        />
+
+        <label>Tagline (optional)</label>
+        <input
+          type="text"
+          id="brandTagline"
+          placeholder="e.g. Empowering Your Digital Presence"
+        />
+
+        <label>About / Description</label>
+        <textarea
+          id="brandAbout"
+          placeholder="Write a short introduction about your brand"
+          required
+        ></textarea>
+
+        <label>Contact Email</label>
+        <input
+          type="email"
+          id="brandEmail"
+          placeholder="contact@brand.com"
+          required
+        />
+
+        <label>Mobile Number</label>
+        <input type="tel" id="brandMobile" placeholder="+1 234 567 890" />
+
+        <label>WhatsApp Number</label>
+        <input
+          type="tel"
+          id="brandWhatsapp"
+          placeholder="+1 234 567 890 (WhatsApp)"
+        />
+
+        <label>Business Address</label>
+        <textarea
+          id="brandAddress"
+          placeholder="Your business address or service area"
+        ></textarea>
+
+        <label>Social Media Links</label>
+        <div class="social-group">
+          <input type="url" id="insta" placeholder="Instagram URL" />
+          <input type="url" id="facebook" placeholder="Facebook URL" />
+          <input type="url" id="linkedin" placeholder="LinkedIn URL" />
+          <input type="url" id="twitter" placeholder="Twitter / X URL" />
+          <input
+            type="url"
+            id="website"
+            placeholder="Website / Portfolio Link"
+          />
+        </div>
+
+        <label>Upload Logo</label>
+        <input type="file" id="brandLogo" accept="image/*" />
+
+        <label>Select Theme</label>
+        <div class="themes">
+          <label
+            ><input type="radio" name="theme" value="theme1" checked /> Blue
+            Modern</label
+          >
+          <label
+            ><input type="radio" name="theme" value="theme2" /> Dark
+            Elegant</label
+          >
+          <label
+            ><input type="radio" name="theme" value="theme3" /> Minimal
+            White</label
+          >
+        </div>
+
+        <button type="submit">Generate Website</button>
+      </form>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="popupModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>Landing Page Preview</span>
+          <button id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <iframe id="previewFrame"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById("popupModal");
+      const closeBtn = document.getElementById("closeModal");
+
+      closeBtn.onclick = () => (modal.style.display = "none");
+      window.onclick = (event) => {
+        if (event.target == modal) modal.style.display = "none";
+      };
+
+      document
+        .getElementById("siteForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const brandName = document.getElementById("brandName").value;
+          const brandTagline = document.getElementById("brandTagline").value;
+          const brandAbout = document.getElementById("brandAbout").value;
+          const brandEmail = document.getElementById("brandEmail").value;
+          const brandMobile = document.getElementById("brandMobile").value;
+          const brandWhatsapp = document.getElementById("brandWhatsapp").value;
+          const brandAddress = document.getElementById("brandAddress").value;
+          const theme = document.querySelector(
+            "input[name='theme']:checked"
+          ).value;
+
+          const links = {
+            insta: document.getElementById("insta").value,
+            facebook: document.getElementById("facebook").value,
+            linkedin: document.getElementById("linkedin").value,
+            twitter: document.getElementById("twitter").value,
+            website: document.getElementById("website").value,
+          };
+
+          const logoFile = document.getElementById("brandLogo").files[0];
+          const reader = new FileReader();
+
+          reader.onload = function (event) {
+            const logoURL = event.target.result;
+            const pageHTML = generateLandingPage({
+              brandName,
+              brandTagline,
+              brandAbout,
+              brandEmail,
+              brandMobile,
+              brandWhatsapp,
+              brandAddress,
+              links,
+              logoURL,
+              theme,
+            });
+            document.getElementById("previewFrame").srcdoc = pageHTML;
+            modal.style.display = "block";
+          };
+
+          if (logoFile) {
+            reader.readAsDataURL(logoFile);
+          } else {
+            const pageHTML = generateLandingPage({
+              brandName,
+              brandTagline,
+              brandAbout,
+              brandEmail,
+              brandMobile,
+              brandWhatsapp,
+              brandAddress,
+              links,
+              logoURL: "",
+              theme,
+            });
+            document.getElementById("previewFrame").srcdoc = pageHTML;
+            modal.style.display = "block";
+          }
+        });
+
+      function generateLandingPage(data) {
+        const {
+          brandName,
+          brandTagline,
+          brandAbout,
+          brandEmail,
+          brandMobile,
+          brandWhatsapp,
+          brandAddress,
+          links,
+          logoURL,
+          theme = "theme1", // theme1, theme2, theme3
+        } = data;
+
+        // Define colors for each theme
+        const themeColors = {
+          theme1: {
+            primary: "#2563eb",
+            secondary: "#f3f4f6",
+            accent: "#ef4444",
+          }, // Blue + Red accents
+          theme2: {
+            primary: "#10b981",
+            secondary: "#f9fafb",
+            accent: "#f59e0b",
+          }, // Green + Orange accents
+          theme3: {
+            primary: "#8b5cf6",
+            secondary: "#ffffff",
+            accent: "#ec4899",
+          }, // Purple + Pink accents
+        };
+
+        const { primary, secondary, accent } = themeColors[theme];
+
+        const socialHTML = `
+    <div class="social-links">
+      ${
+        links.website ? `<a href="${links.website}" target="_blank">🌐</a>` : ""
+      }
+      ${links.insta ? `<a href="${links.insta}" target="_blank">📸</a>` : ""}
+      ${
+        links.facebook
+          ? `<a href="${links.facebook}" target="_blank">📘</a>`
+          : ""
+      }
+      ${
+        links.linkedin
+          ? `<a href="${links.linkedin}" target="_blank">💼</a>`
+          : ""
+      }
+      ${
+        links.twitter ? `<a href="${links.twitter}" target="_blank">🐦</a>` : ""
+      }
+    </div>
+  `;
+
+        const contactHTML = `
+    <div class="contact-info">
+      ${
+        brandEmail
+          ? `<p>📧 <a href="mailto:${brandEmail}">${brandEmail}</a></p>`
+          : ""
+      }
+      ${brandMobile ? `<p>📞 ${brandMobile}</p>` : ""}
+      ${
+        brandWhatsapp
+          ? `<p>💬 <a href="https://wa.me/${brandWhatsapp.replace(
+              /\D/g,
+              ""
+            )}" target="_blank">${brandWhatsapp}</a></p>`
+          : ""
+      }
+      ${brandAddress ? `<p>📍 ${brandAddress}</p>` : ""}
+    </div>
+  `;
+
+        return `
+    <html>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          :root {
+            --primary-color: ${primary};
+            --secondary-color: ${secondary};
+            --accent-color: ${accent};
+          }
+
+          body {
+            font-family: 'Inter', sans-serif;
+            margin:0;
+            background: var(--secondary-color);
+            color: #111827;
+            line-height:1.6;
+          }
+
+          header {
+            text-align: center;
+            padding: 80px 20px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+          }
+
+          header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color);
+          }
+
+          header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+          }
+
+          header h3 {
+            font-weight:400;
+            margin-bottom:20px;
+            color: var(--accent-color);
+          }
+
+          .cta-btn {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration:none;
+            font-weight:600;
+            margin:5px;
+            display:inline-block;
+            transition: 0.3s;
+          }
+
+          .cta-btn:hover {
+            background: var(--accent-color);
+          }
+
+          section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            text-align: center;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+          }
+
+          section h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+          }
+
+          section p {
+            font-size: 1.1rem;
+          }
+
+          .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            gap: 30px;
+          }
+
+          .service-card {
+            background: var(--secondary-color);
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid var(--primary-color);
+            transition: transform 0.3s, border-color 0.3s;
+          }
+
+          .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+          }
+
+          .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+          }
+
+          .service-card p {
+            font-size: 1rem;
+          }
+
+          .contact-info p, .social-links a {
+            margin: 10px;
+          }
+
+          .social-links a {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration:none;
+            transition:0.3s;
+          }
+
+          .social-links a:hover {
+            color: var(--accent-color);
+          }
+
+          footer {
+            text-align:center;
+            padding:50px 20px;
+            background:#fff;
+            border-top:2px solid var(--primary-color);
+          }
+        </style>
+      </head>
+      <body>
+        <header>
+          ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+          <h1>${brandName}</h1>
+          ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
+          <a class="cta-btn" href="${
+            links.website || "#"
+          }" target="_blank">Visit Website</a>
+          <a class="cta-btn" href="mailto:${
+            brandEmail || "#"
+          }" target="_blank">Contact Us</a>
+        </header>
+
+        <section id="about">
+          <h2>About Us</h2>
+          <p>${brandAbout}</p>
+        </section>
+
+        <section id="services">
+          <h2>Our Services</h2>
+          <div class="services-grid">
+            <div class="service-card"><h3>Service 1</h3><p>Short description of your service.</p></div>
+            <div class="service-card"><h3>Service 2</h3><p>Short description of your service.</p></div>
+            <div class="service-card"><h3>Service 3</h3><p>Short description of your service.</p></div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact Us</h2>
+          ${contactHTML}
+          ${socialHTML}
+        </section>
+
+        <footer>
+          &copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.
+        </footer>
+      </body>
+    </html>
+  `;
+      }
+      function generateLandingPage(data) {
+        const {
+          brandName,
+          brandTagline,
+          brandAbout,
+          brandEmail,
+          brandMobile,
+          brandWhatsapp,
+          brandAddress,
+          links,
+          logoURL,
+          theme = "theme1",
+        } = data;
+
+        const themeColors = {
+          theme1: {
+            primary: "#2563eb",
+            secondary: "#ffffff",
+            accent: "#ef4444",
+          }, // Blue + Red
+          theme2: {
+            primary: "#10b981",
+            secondary: "#f9fafb",
+            accent: "#f59e0b",
+          }, // Green + Orange
+          theme3: {
+            primary: "#8b5cf6",
+            secondary: "#ffffff",
+            accent: "#ec4899",
+          }, // Purple + Pink
+        };
+
+        const { primary, secondary, accent } = themeColors[theme];
+
+        const socialHTML = `
+    <div class="social-links">
+      ${
+        links.website ? `<a href="${links.website}" target="_blank">🌐</a>` : ""
+      }
+      ${links.insta ? `<a href="${links.insta}" target="_blank">📸</a>` : ""}
+      ${
+        links.facebook
+          ? `<a href="${links.facebook}" target="_blank">📘</a>`
+          : ""
+      }
+      ${
+        links.linkedin
+          ? `<a href="${links.linkedin}" target="_blank">💼</a>`
+          : ""
+      }
+      ${
+        links.twitter ? `<a href="${links.twitter}" target="_blank">🐦</a>` : ""
+      }
+    </div>
+  `;
+
+        const contactHTML = `
+    <div class="contact-info">
+      ${
+        brandEmail
+          ? `<p>📧 <a href="mailto:${brandEmail}">${brandEmail}</a></p>`
+          : ""
+      }
+      ${brandMobile ? `<p>📞 ${brandMobile}</p>` : ""}
+      ${
+        brandWhatsapp
+          ? `<p>💬 <a href="https://wa.me/${brandWhatsapp.replace(
+              /\D/g,
+              ""
+            )}" target="_blank">${brandWhatsapp}</a></p>`
+          : ""
+      }
+      ${brandAddress ? `<p>📍 ${brandAddress}</p>` : ""}
+    </div>
+  `;
+
+        return `
+    <html>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          :root {
+            --primary-color: ${primary};
+            --secondary-color: ${secondary};
+            --accent-color: ${accent};
+          }
+
+          body {
+            font-family: 'Inter', sans-serif;
+            margin:0;
+            background: var(--secondary-color);
+            color: #111827;
+            line-height:1.6;
+          }
+
+          a { text-decoration:none; transition:0.3s; }
+          a:hover { opacity:0.8; }
+
+          header.hero {
+            background: var(--secondary-color);
+            text-align:center;
+            padding:100px 20px 60px;
+            position:relative;
+          }
+
+          header.hero img {
+            width: 120px;
+            height: 120px;
+            border-radius:50%;
+            object-fit:cover;
+            border:3px solid var(--primary-color);
+            margin-bottom:20px;
+          }
+
+          header.hero h1 {
+            font-size:3rem;
+            color: var(--primary-color);
+            margin-bottom:10px;
+          }
+
+          header.hero h3 {
+            font-weight:400;
+            color: var(--accent-color);
+            margin-bottom:30px;
+            font-size:1.3rem;
+          }
+
+          .hero-buttons {
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+          }
+
+          .cta-btn {
+            background: var(--primary-color);
+            color: #fff;
+            padding:15px 30px;
+            border-radius:12px;
+            font-weight:600;
+            display:inline-block;
+            transition:0.3s;
+          }
+
+          .cta-btn:hover {
+            background: var(--accent-color);
+          }
+
+          section {
+            padding:80px 20px;
+            max-width:1100px;
+            margin:0 auto 40px;
+            background:#fff;
+            border-radius:16px;
+            box-shadow:0 6px 25px rgba(0,0,0,0.07);
+          }
+
+          section h2 {
+            font-size:2rem;
+            color: var(--primary-color);
+            margin-bottom:40px;
+            text-align:center;
+          }
+
+          section p {
+            font-size:1.1rem;
+            max-width:800px;
+            margin:0 auto 30px;
+          }
+
+          .services-grid, .testimonials-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+            gap:30px;
+          }
+
+          .service-card, .testimonial-card {
+            background: var(--secondary-color);
+            padding:30px;
+            border-radius:16px;
+            border:2px solid var(--primary-color);
+            transition:0.3s;
+          }
+
+          .service-card:hover, .testimonial-card:hover {
+            transform:translateY(-5px);
+            border-color: var(--accent-color);
+          }
+
+          .service-card h3, .testimonial-card h3 {
+            color: var(--primary-color);
+            margin-bottom:15px;
+          }
+
+          .service-card p, .testimonial-card p {
+            font-size:1rem;
+          }
+
+          .contact-info p, .social-links a {
+            margin:10px;
+            font-size:1rem;
+          }
+
+          .social-links a {
+            font-size:1.8rem;
+            color: var(--primary-color);
+          }
+
+          .social-links a:hover {
+            color: var(--accent-color);
+          }
+
+          footer {
+            text-align:center;
+            padding:50px 20px;
+            background:#fff;
+            border-top:3px solid var(--primary-color);
+            font-size:0.95rem;
+          }
+
+        </style>
+      </head>
+
+      <body>
+
+        <header class="hero">
+          ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+          <h1>${brandName}</h1>
+          ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
+          <div class="hero-buttons">
+            <a class="cta-btn" href="${
+              links.website || "#"
+            }" target="_blank">Visit Website</a>
+            <a class="cta-btn" href="mailto:${
+              brandEmail || "#"
+            }" target="_blank">Contact Us</a>
+          </div>
+        </header>
+
+        <section id="about">
+          <h2>About Us</h2>
+          <p>${brandAbout}</p>
+        </section>
+
+        <section id="services">
+          <h2>Our Services</h2>
+          <div class="services-grid">
+            <div class="service-card"><h3>Service 1</h3><p>Describe your service professionally.</p></div>
+            <div class="service-card"><h3>Service 2</h3><p>Describe your service professionally.</p></div>
+            <div class="service-card"><h3>Service 3</h3><p>Describe your service professionally.</p></div>
+          </div>
+        </section>
+
+        <section id="testimonials">
+          <h2>What Clients Say</h2>
+          <div class="testimonials-grid">
+            <div class="testimonial-card"><h3>John Doe</h3><p>"Excellent service and professional work."</p></div>
+            <div class="testimonial-card"><h3>Jane Smith</h3><p>"Highly recommend for business listings."</p></div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact Us</h2>
+          ${contactHTML}
+          ${socialHTML}
+        </section>
+
+        <footer>
+          &copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.
+        </footer>
+
+      </body>
+    </html>
+  `;
+      }
+      function generateLandingPage(data) {
+        const {
+          brandName,
+          brandTagline,
+          brandAbout,
+          brandEmail,
+          brandMobile,
+          brandWhatsapp,
+          brandAddress,
+          links,
+          logoURL,
+          theme = "theme1",
+        } = data;
+
+        const themeColors = {
+          theme1: {
+            primary: "#2563eb",
+            secondary: "#ffffff",
+            accent: "#ef4444",
+          }, // Blue + Red
+          theme2: {
+            primary: "#10b981",
+            secondary: "#f9fafb",
+            accent: "#f59e0b",
+          }, // Green + Orange
+          theme3: {
+            primary: "#8b5cf6",
+            secondary: "#ffffff",
+            accent: "#ec4899",
+          }, // Purple + Pink
+        };
+
+        const { primary, secondary, accent } = themeColors[theme];
+
+        const socialHTML = `
+    <div class="social-links">
+      ${
+        links.website ? `<a href="${links.website}" target="_blank">🌐</a>` : ""
+      }
+      ${links.insta ? `<a href="${links.insta}" target="_blank">📸</a>` : ""}
+      ${
+        links.facebook
+          ? `<a href="${links.facebook}" target="_blank">📘</a>`
+          : ""
+      }
+      ${
+        links.linkedin
+          ? `<a href="${links.linkedin}" target="_blank">💼</a>`
+          : ""
+      }
+      ${
+        links.twitter ? `<a href="${links.twitter}" target="_blank">🐦</a>` : ""
+      }
+    </div>
+  `;
+
+        const contactHTML = `
+    <div class="contact-info">
+      ${
+        brandEmail
+          ? `<p>📧 <a href="mailto:${brandEmail}">${brandEmail}</a></p>`
+          : ""
+      }
+      ${brandMobile ? `<p>📞 ${brandMobile}</p>` : ""}
+      ${
+        brandWhatsapp
+          ? `<p>💬 <a href="https://wa.me/${brandWhatsapp.replace(
+              /\D/g,
+              ""
+            )}" target="_blank">${brandWhatsapp}</a></p>`
+          : ""
+      }
+      ${brandAddress ? `<p>📍 ${brandAddress}</p>` : ""}
+    </div>
+  `;
+
+        return `
+    <html>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          :root {
+            --primary-color: ${primary};
+            --secondary-color: ${secondary};
+            --accent-color: ${accent};
+          }
+
+          body {
+            font-family: 'Inter', sans-serif;
+            margin:0;
+            background: var(--secondary-color);
+            color: #111827;
+            line-height:1.6;
+          }
+
+          a { text-decoration:none; transition:0.3s; }
+          a:hover { opacity:0.8; }
+
+          header.hero {
+            background: var(--secondary-color);
+            text-align:center;
+            padding:100px 20px 60px;
+            position:relative;
+          }
+
+          header.hero img {
+            width: 120px;
+            height: 120px;
+            border-radius:50%;
+            object-fit:cover;
+            border:3px solid var(--primary-color);
+            margin-bottom:20px;
+          }
+
+          header.hero h1 {
+            font-size:3rem;
+            color: var(--primary-color);
+            margin-bottom:10px;
+          }
+
+          header.hero h3 {
+            font-weight:400;
+            color: var(--accent-color);
+            margin-bottom:30px;
+            font-size:1.3rem;
+          }
+
+          .hero-buttons {
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+          }
+
+          .cta-btn {
+            background: var(--primary-color);
+            color: #fff;
+            padding:15px 30px;
+            border-radius:12px;
+            font-weight:600;
+            display:inline-block;
+            transition:0.3s;
+          }
+
+          .cta-btn:hover {
+            background: var(--accent-color);
+          }
+
+          section {
+            padding:80px 20px;
+            max-width:1100px;
+            margin:0 auto 40px;
+            background:#fff;
+            border-radius:16px;
+            box-shadow:0 6px 25px rgba(0,0,0,0.07);
+          }
+
+          section h2 {
+            font-size:2rem;
+            color: var(--primary-color);
+            margin-bottom:40px;
+            text-align:center;
+          }
+
+          section p {
+            font-size:1.1rem;
+            max-width:800px;
+            margin:0 auto 30px;
+          }
+
+          .services-grid, .testimonials-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+            gap:30px;
+          }
+
+          .service-card, .testimonial-card {
+            background: var(--secondary-color);
+            padding:30px;
+            border-radius:16px;
+            border:2px solid var(--primary-color);
+            transition:0.3s;
+          }
+
+          .service-card:hover, .testimonial-card:hover {
+            transform:translateY(-5px);
+            border-color: var(--accent-color);
+          }
+
+          .service-card h3, .testimonial-card h3 {
+            color: var(--primary-color);
+            margin-bottom:15px;
+          }
+
+          .service-card p, .testimonial-card p {
+            font-size:1rem;
+          }
+
+          .contact-info p, .social-links a {
+            margin:10px;
+            font-size:1rem;
+          }
+
+          .social-links a {
+            font-size:1.8rem;
+            color: var(--primary-color);
+          }
+
+          .social-links a:hover {
+            color: var(--accent-color);
+          }
+
+          footer {
+            text-align:center;
+            padding:50px 20px;
+            background:#fff;
+            border-top:3px solid var(--primary-color);
+            font-size:0.95rem;
+          }
+
+        </style>
+      </head>
+
+      <body>
+
+        <header class="hero">
+          ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+          <h1>${brandName}</h1>
+          ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
+          <div class="hero-buttons">
+            <a class="cta-btn" href="${
+              links.website || "#"
+            }" target="_blank">Visit Website</a>
+            <a class="cta-btn" href="mailto:${
+              brandEmail || "#"
+            }" target="_blank">Contact Us</a>
+          </div>
+        </header>
+
+        <section id="about">
+          <h2>About Us</h2>
+          <p>${brandAbout}</p>
+        </section>
+
+        <section id="services">
+          <h2>Our Services</h2>
+          <div class="services-grid">
+            <div class="service-card"><h3>Service 1</h3><p>Describe your service professionally.</p></div>
+            <div class="service-card"><h3>Service 2</h3><p>Describe your service professionally.</p></div>
+            <div class="service-card"><h3>Service 3</h3><p>Describe your service professionally.</p></div>
+          </div>
+        </section>
+
+        <section id="testimonials">
+          <h2>What Clients Say</h2>
+          <div class="testimonials-grid">
+            <div class="testimonial-card"><h3>John Doe</h3><p>"Excellent service and professional work."</p></div>
+            <div class="testimonial-card"><h3>Jane Smith</h3><p>"Highly recommend for business listings."</p></div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact Us</h2>
+          ${contactHTML}
+          ${socialHTML}
+        </section>
+
+        <footer>
+          &copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.
+        </footer>
+
+      </body>
+    </html>
+  `;
+      }
+      function generateLandingPage(data) {
+        const {
+          brandName,
+          brandTagline,
+          brandAbout,
+          brandEmail,
+          brandMobile,
+          brandWhatsapp,
+          brandAddress,
+          links,
+          logoURL,
+          theme = "theme1", // theme1, theme2, theme3
+        } = data;
+
+        // Theme color palettes
+        const themeColors = {
+          theme1: {
+            primary: "#2563eb",
+            secondary: "#ffffff",
+            accent: "#ef4444",
+          },
+          theme2: {
+            primary: "#10b981",
+            secondary: "#f9fafb",
+            accent: "#f59e0b",
+          },
+          theme3: {
+            primary: "#8b5cf6",
+            secondary: "#ffffff",
+            accent: "#ec4899",
+          },
+        };
+        const { primary, secondary, accent } = themeColors[theme];
+
+        const socialHTML = `
+    <div class="social-links">
+      ${
+        links.website ? `<a href="${links.website}" target="_blank">🌐</a>` : ""
+      }
+      ${links.insta ? `<a href="${links.insta}" target="_blank">📸</a>` : ""}
+      ${
+        links.facebook
+          ? `<a href="${links.facebook}" target="_blank">📘</a>`
+          : ""
+      }
+      ${
+        links.linkedin
+          ? `<a href="${links.linkedin}" target="_blank">💼</a>`
+          : ""
+      }
+      ${
+        links.twitter ? `<a href="${links.twitter}" target="_blank">🐦</a>` : ""
+      }
+    </div>
+  `;
+
+        const contactHTML = `
+    <div class="contact-info">
+      ${
+        brandEmail
+          ? `<p>📧 <a href="mailto:${brandEmail}">${brandEmail}</a></p>`
+          : ""
+      }
+      ${brandMobile ? `<p>📞 ${brandMobile}</p>` : ""}
+      ${
+        brandWhatsapp
+          ? `<p>💬 <a href="https://wa.me/${brandWhatsapp.replace(/\D/g, "")}" target="_blank">${brandWhatsapp}</a></p>`
+          : ""
+      }
+      ${brandAddress ? `<p>📍 ${brandAddress}</p>` : ""}
+    </div>
+  `;
+
+        // Theme-specific layout & styles. For theme1 we add Swiper + scroll & color/text animations
+        const themes = {
+          theme1: `
+      :root{--primary:${primary};--secondary:${secondary};--accent:${accent}}
+      body{font-family:'Inter',sans-serif;margin:0;background:var(--secondary);color:#111827;scroll-behavior:smooth}
+      a{color:var(--primary)}
+      header{ text-align:center; padding:100px 20px 60px; background:#fff; box-shadow:0 6px 25px rgba(0,0,0,0.06); overflow:hidden}
+      header img{width:120px;height:120px;border-radius:50%;border:3px solid var(--primary);margin-bottom:18px}
+      header h1{font-size:3rem;margin-bottom:6px;color:var(--primary);}
+      header h1.accent-anim{animation:colorShift 6s linear infinite}
+      header h3{font-weight:400;margin-bottom:18px;color:var(--accent)}
+      @keyframes colorShift{0%{color:var(--primary)}50%{color:var(--accent)}100%{color:var(--primary)}}
+
+    /* Scroll animations */
+    .animate-on-scroll{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+    .animate-on-scroll.in-view{opacity:1;transform:translateY(0)}
+
+    /* Floating/parallax effect on scroll */
+    .float-on-scroll{will-change:transform;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+
+      /* Swiper specific */
+      .swiper{padding:30px 0}
+      .swiper-slide{width:auto;display:flex;justify-content:center}
+      .service-card{background:var(--secondary);padding:28px;border-radius:14px;border:2px solid var(--primary);min-width:240px;max-width:420px;box-shadow:0 10px 30px rgba(2,6,23,0.04);transition:transform .35s,border-color .3s}
+      .service-card:hover{transform:translateY(-6px);border-color:var(--accent)}
+      .service-card h3{color:var(--primary);margin-bottom:12px}
+      .services-grid{display:flex;gap:20px;justify-content:center}
+
+      section{padding:64px 20px;max-width:1100px;margin:24px auto;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.04)}
+      section h2{font-size:1.9rem;color:var(--primary);margin-bottom:18px;text-align:center}
+      section p{font-size:1.05rem;color:#374151;max-width:800px;margin:0 auto}
+
+      .hero-buttons{display:flex;gap:14px;justify-content:center;margin-top:14px}
+      .cta-btn{background:var(--primary);color:#fff;padding:12px 24px;border-radius:10px;font-weight:600}
+      .cta-btn:hover{background:var(--accent)}
+
+      /* responsive */
+      @media (max-width:700px){header h1{font-size:2rem} .service-card{min-width:200px}}
+    `,
+          theme2: `
+      body { font-family:'Inter',sans-serif; margin:0; display:flex; min-height:100vh; background:${secondary}; color:#111827;}
+      a { text-decoration:none; transition:0.3s; } a:hover { opacity:0.8; }
+      aside.sidebar { width:250px; background:#fff; padding:40px 20px; display:flex; flex-direction:column; align-items:center; box-shadow:2px 0 20px rgba(0,0,0,0.07);} 
+      aside.sidebar img { width:100px; height:100px; border-radius:50%; border:3px solid ${primary}; margin-bottom:20px; }
+      aside.sidebar h1 { color:${primary}; font-size:2rem; margin-bottom:10px; text-align:center; }
+      aside.sidebar .social-links a { font-size:1.6rem; margin:8px; color:${primary}; } .social-links a:hover { color:${accent}; }
+      main { flex:1; padding:60px 40px; }
+      .hero { text-align:left; margin-bottom:60px; }
+      .hero h2 { font-size:2.5rem; color:${primary}; margin-bottom:10px; }
+      .hero p { font-size:1.2rem; color:${accent}; margin-bottom:20px; }
+      .cta-btn { background:${primary}; color:#fff; padding:12px 24px; border-radius:10px; margin-right:10px; display:inline-block; font-weight:600;}
+      .cta-btn:hover { background:${accent}; }
+      section { margin-bottom:60px; }
+      section h2 { color:${primary}; font-size:2rem; margin-bottom:30px; }
+      .services-row { display:flex; flex-wrap:wrap; gap:20px; }
+      .service-card { flex:1 1 200px; background:#fff; padding:25px; border-radius:14px; border:2px solid ${primary}; transition:0.3s; }
+      .service-card:hover { border-color:${accent}; transform:translateY(-4px); }
+      .service-card h3 { color:${primary}; margin-bottom:10px; }
+      .contact-info p { font-size:1rem; margin-bottom:8px; }
+      footer { text-align:center; padding:40px 20px; background:#fff; border-top:3px solid ${primary}; font-size:0.95rem; }
+    `,
+          theme3: `
+      body { font-family:'Inter',sans-serif; margin:0; background:${secondary}; color:#111827; }
+      a { text-decoration:none; transition:0.3s; } a:hover { opacity:0.8; }
+      header { position:relative; background:${secondary}; padding:80px 20px; overflow:hidden; text-align:left; }
+      header::before { content:""; position:absolute; top:0; right:0; width:300px; height:300px; background:${primary}; border-radius:50%; opacity:0.2; }
+      header img { width:120px; height:120px; border-radius:50%; border:3px solid ${primary}; margin-bottom:20px; position:relative; z-index:1; }
+      header h1 { color:${primary}; font-size:3rem; margin-bottom:10px; position:relative; z-index:1;}
+      header h3 { color:${accent}; font-weight:400; font-size:1.3rem; margin-bottom:20px; position:relative; z-index:1;}
+      .hero-buttons { display:flex; gap:20px; margin-top:20px; position:relative; z-index:1; }
+      .cta-btn { background:${primary}; color:#fff; padding:15px 28px; border-radius:12px; font-weight:600; }
+      .cta-btn:hover { background:${accent}; }
+      section { padding:80px 20px; max-width:1100px; margin:0 auto 40px; border-radius:16px; box-shadow:0 6px 25px rgba(0,0,0,0.07); }
+      section h2 { color:${primary}; text-align:center; font-size:2rem; margin-bottom:40px; }
+      .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+      .service-card { background:#fff; padding:30px; border-radius:16px; border:2px solid ${primary}; transition:0.3s; }
+      .service-card:hover { border-color:${accent}; transform:translateY(-5px);} 
+      .service-card h3 { color:${primary}; margin-bottom:15px;}
+      .contact-info p, .social-links a { margin:10px; font-size:1rem; }
+      .social-links a { font-size:1.8rem; color:${primary}; } .social-links a:hover { color:${accent}; }
+      footer { text-align:center; padding:50px 20px; background:#fff; border-top:3px solid ${primary}; font-size:0.95rem; }
+    `,
+        };
+
+        // Layout for each theme. Theme1 layout includes Swiper markup for services and animation hooks.
+        const layouts = {
+          theme1: `
+      <header>
+        ${logoURL ? `<img class="float-on-scroll" src="${logoURL}" alt="Logo">` : ""}
+        <h1 class="accent-anim">${brandName}</h1>
+        ${brandTagline ? `<h3 class="animate-on-scroll">${brandTagline}</h3>` : ""}
+        <div class="hero-buttons animate-on-scroll">
+          <a class="cta-btn" href="${links.website || "#"}" target="_blank">Visit Website</a>
+          <a class="cta-btn" href="mailto:${brandEmail || "#"}" target="_blank">Contact</a>
+        </div>
+      </header>
+      <section id="about" class="animate-on-scroll"><h2>About Us</h2><p>${brandAbout}</p></section>
+
+      <section id="services" class="animate-on-scroll">
+        <h2>Our Services</h2>
+        <!-- Swiper container -->
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="service-card float-on-scroll"><h3>Service 1</h3><p>Describe your service professionally.</p></div></div>
+            <div class="swiper-slide"><div class="service-card float-on-scroll"><h3>Service 2</h3><p>Describe your service professionally.</p></div></div>
+            <div class="swiper-slide"><div class="service-card float-on-scroll"><h3>Service 3</h3><p>Describe your service professionally.</p></div></div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Navigation -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+
+      <section id="contact" class="animate-on-scroll"><h2>Contact Us</h2>${contactHTML}${socialHTML}</section>
+      <footer>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</footer>
+    `,
+          theme2: `
+      <aside class="sidebar">
+        ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+        <h1>${brandName}</h1>
+        ${socialHTML}
+      </aside>
+      <main>
+        <div class="hero">
+          <h2>${brandTagline || "Welcome to our business"}</h2>
+          <p>${brandAbout}</p>
+          <a class="cta-btn" href="${links.website || "#"}">Visit Website</a>
+          <a class="cta-btn" href="mailto:${brandEmail || "#"}">Contact</a>
+        </div>
+        <section id="services">
+          <h2>Our Services</h2>
+          <div class="services-row">
+            <div class="service-card"><h3>Service 1</h3><p>Professional description.</p></div>
+            <div class="service-card"><h3>Service 2</h3><p>Professional description.</p></div>
+            <div class="service-card"><h3>Service 3</h3><p>Professional description.</p></div>
+          </div>
+        </section>
+        <section id="contact">
+          <h2>Contact Us</h2>
+          ${contactHTML}
+        </section>
+        <footer>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</footer>
+      </main>
+    `,
+          theme3: `
+      <header>
+        ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+        <h1>${brandName}</h1>
+        ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
+        <div class="hero-buttons">
+          <a class="cta-btn" href="${links.website || "#"}" target="_blank">Visit Website</a>
+          <a class="cta-btn" href="mailto:${brandEmail || "#"}" target="_blank">Contact</a>
+        </div>
+      </header>
+      <section id="about"><h2>About Us</h2><p>${brandAbout}</p></section>
+      <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card"><h3>Service 1</h3><p>Professional service description.</p></div>
+          <div class="service-card"><h3>Service 2</h3><p>Professional service description.</p></div>
+          <div class="service-card"><h3>Service 3</h3><p>Professional service description.</p></div>
+        </div>
+      </section>
+      <section id="contact"><h2>Contact Us</h2>${contactHTML}${socialHTML}</section>
+      <footer>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</footer>
+    `,
+        };
+
+        // Add external assets and scripts only for theme1
+        const extraHead =
+          theme === "theme1"
+            ? `
+        <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+        <style>/* small override so swiper sits well inside iframe */
+          .swiper-button-next, .swiper-button-prev { color: var(--primary); }
+          .swiper-pagination-bullet { background: var(--primary); opacity:0.8 }
+        </style>
+      `
+            : "";
+
+        const extraScripts =
+          theme === "theme1"
+            ? `
+  <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"><\/script>
+        <script>
+          // Scroll-trigger animations
+          (function(){
+            const io = new IntersectionObserver((entries)=>{
+              entries.forEach(e=>{
+                if(e.isIntersecting) e.target.classList.add('in-view');
+              });
+            },{threshold:0.12});
+            document.querySelectorAll('.animate-on-scroll').forEach(el=>io.observe(el));
+          })();
+
+          // Initialize Swiper for services
+          (function(){
+            try {
+              const swiper = new Swiper('.swiper', {
+                loop: true,
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                spaceBetween: 20,
+                autoplay: { delay: 2600, disableOnInteraction: false },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                breakpoints: {
+                  640: { slidesPerView: 1 },
+                  900: { slidesPerView: 2 },
+                },
+                effect: 'coverflow',
+                coverflowEffect: { rotate: 10, stretch: 0, depth: 120, modifier: 1, slideShadows: false }
+              });
+            } catch(e) { /* ignore if Swiper not available */ }
+          })();
+
+          // Floating / parallax effect: smooth translateY based on element position in viewport
+          (function(){
+            const els = Array.from(document.querySelectorAll('.float-on-scroll'));
+            if(!els.length) return;
+            const amplitude = 18; // max px offset
+            let ticking = false;
+
+            function update() {
+              const winH = window.innerHeight || document.documentElement.clientHeight;
+              els.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                // element center relative to viewport center (-1..1)
+                const elemCenter = rect.top + rect.height/2;
+                const offset = (elemCenter - winH/2) / (winH/2);
+                const y = Math.max(-amplitude, Math.min(amplitude, -offset * amplitude));
+                el.style.transform = 'translateY(' + y + 'px)';
+              });
+              ticking = false;
+            }
+
+            function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+
+            window.addEventListener('scroll', onScroll, {passive:true});
+            window.addEventListener('resize', () => { requestAnimationFrame(update); });
+            // initial
+            requestAnimationFrame(update);
+          })();
+        <\/script>
+      `
+            : "";
+
+        return `
+    <html>
+      <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        ${extraHead}
+        <style>${themes[theme]}</style>
+      </head>
+      <body>
+        ${layouts[theme]}
+        ${extraScripts}
+      </body>
+    </html>
+  `;
+      }
+    </script>
+  </body>
+</html>
