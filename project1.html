@@ -255,13 +255,13 @@
         <label>Select Theme</label>
         <div class="themes">
           <label
-            ><input type="radio" name="theme" value="theme1" checked /> Ocean Breeze</label
+            ><input type="radio" name="theme" value="theme1" checked /> Modern Professional</label
           >
           <label
-            ><input type="radio" name="theme" value="theme2" /> Emerald Forest</label
+            ><input type="radio" name="theme" value="theme2" /> Corporate Elite</label
           >
           <label
-            ><input type="radio" name="theme" value="theme3" /> Sunset Coral</label
+            ><input type="radio" name="theme" value="theme3" /> Dark Futuristic</label
           >
         </div>
 
@@ -435,279 +435,565 @@
           theme1: `
       :root{--primary:${primary};--secondary:${secondary};--accent:${accent};--dark:${dark}}
       *{margin:0;padding:0;box-sizing:border-box}
-      body{font-family:'Inter',-apple-system,sans-serif;background:linear-gradient(135deg,var(--secondary) 0%,#fff 100%);color:#1e293b;scroll-behavior:smooth;overflow-x:hidden}
+      body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;color:#1e293b;scroll-behavior:smooth;overflow-x:hidden}
 
-      header{text-align:center;padding:120px 20px 80px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);position:relative;overflow:hidden}
-      header::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:rgba(255,255,255,0.1);border-radius:50%;animation:float 20s infinite ease-in-out}
-      header::after{content:'';position:absolute;bottom:-30%;left:-5%;width:400px;height:400px;background:rgba(255,255,255,0.08);border-radius:50%;animation:float 15s infinite ease-in-out reverse}
-      @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-30px) rotate(5deg)}}
+      nav{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:16px 5%;box-shadow:0 2px 20px rgba(0,0,0,0.06);z-index:100;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s}
+      nav .logo{font-size:1.4rem;font-weight:800;color:var(--primary);text-decoration:none}
+      nav ul{display:flex;gap:32px;list-style:none;align-items:center}
+      nav ul li a{color:#475569;text-decoration:none;font-weight:600;transition:color 0.3s;font-size:0.95rem}
+      nav ul li a:hover{color:var(--primary)}
+      .nav-cta{background:var(--primary);color:#fff!important;padding:10px 24px;border-radius:50px;transition:all 0.3s}
+      .nav-cta:hover{background:var(--dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.15)}
 
-      header img{width:140px;height:140px;border-radius:50%;border:4px solid rgba(255,255,255,0.9);margin-bottom:24px;position:relative;z-index:2;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:scaleIn 0.8s ease-out}
-      @keyframes scaleIn{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}
+      header{text-align:center;padding:180px 20px 100px;background:linear-gradient(135deg,var(--primary) 0%,var(--dark) 100%);position:relative;overflow:hidden;min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+      header::before{content:'';position:absolute;top:-50%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(255,255,255,0.15),transparent);border-radius:50%;animation:float 20s infinite ease-in-out}
+      header::after{content:'';position:absolute;bottom:-30%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent);border-radius:50%;animation:float 15s infinite ease-in-out reverse}
+      @keyframes float{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(30px,-30px) rotate(10deg)}}
 
-      header h1{font-size:3.5rem;margin-bottom:12px;color:#fff;position:relative;z-index:2;font-weight:800;text-shadow:0 4px 20px rgba(0,0,0,0.2);animation:slideDown 0.8s ease-out 0.2s backwards}
-      @keyframes slideDown{from{transform:translateY(-30px);opacity:0}to{transform:translateY(0);opacity:1}}
+      .hero-content{position:relative;z-index:2;max-width:900px}
+      header img{width:160px;height:160px;border-radius:50%;border:5px solid rgba(255,255,255,0.95);margin-bottom:32px;box-shadow:0 25px 80px rgba(0,0,0,0.4);animation:scaleIn 0.9s cubic-bezier(0.34,1.56,0.64,1)}
+      @keyframes scaleIn{0%{transform:scale(0.3) rotate(-180deg);opacity:0}100%{transform:scale(1) rotate(0deg);opacity:1}}
 
-      header h3{font-weight:400;margin-bottom:24px;color:rgba(255,255,255,0.95);position:relative;z-index:2;font-size:1.3rem;animation:slideDown 0.8s ease-out 0.4s backwards}
+      header h1{font-size:4.5rem;margin-bottom:20px;color:#fff;font-weight:900;text-shadow:0 4px 30px rgba(0,0,0,0.3);animation:slideUp 0.9s ease-out 0.2s backwards;letter-spacing:-1px;line-height:1.1}
+      @keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
 
-      .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;animation:slideDown 0.8s ease-out 0.6s backwards}
-      .cta-btn{background:#fff;color:var(--primary);padding:16px 36px;border-radius:50px;font-weight:700;text-decoration:none;display:inline-block;transition:all 0.3s ease;box-shadow:0 10px 30px rgba(0,0,0,0.15);font-size:1.05rem}
-      .cta-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,0,0,0.25);background:var(--dark);color:#fff}
+      header h3{font-weight:400;margin-bottom:40px;color:rgba(255,255,255,0.95);font-size:1.5rem;animation:slideUp 0.9s ease-out 0.4s backwards;max-width:700px;margin-left:auto;margin-right:auto}
 
-      .animate-scroll{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.34,1.56,0.64,1)}
+      .hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;animation:slideUp 0.9s ease-out 0.6s backwards}
+      .cta-btn{background:#fff;color:var(--primary);padding:18px 42px;border-radius:50px;font-weight:700;text-decoration:none;display:inline-block;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 10px 40px rgba(0,0,0,0.2);font-size:1.1rem;border:2px solid transparent}
+      .cta-btn:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 20px 50px rgba(0,0,0,0.3);background:var(--accent)}
+      .cta-btn.secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.9)}
+      .cta-btn.secondary:hover{background:#fff;color:var(--primary)}
+
+      .scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;z-index:2}
+      @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,15px)}}
+      .scroll-indicator::before{content:'↓';font-size:2rem;color:rgba(255,255,255,0.8)}
+
+      .animate-scroll{opacity:0;transform:translateY(60px);transition:all 1s cubic-bezier(0.34,1.56,0.64,1)}
       .animate-scroll.visible{opacity:1;transform:translateY(0)}
 
-      section{padding:80px 20px;max-width:1200px;margin:60px auto;background:#fff;border-radius:24px;box-shadow:0 10px 60px rgba(0,0,0,0.08);position:relative}
-      section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:24px 24px 0 0}
-      section h2{font-size:2.5rem;color:var(--dark);margin-bottom:48px;text-align:center;font-weight:800;position:relative}
-      section h2::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px}
-      section p{font-size:1.15rem;color:#475569;max-width:800px;margin:0 auto 32px;line-height:1.8}
+      section{padding:100px 5%;max-width:1400px;margin:0 auto;position:relative}
+      section.white-bg{background:#fff;margin:80px auto;border-radius:30px;box-shadow:0 15px 80px rgba(0,0,0,0.08);padding:100px 5%}
+      section.white-bg::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--primary),var(--accent),var(--primary));border-radius:30px 30px 0 0;animation:shimmer 3s linear infinite;background-size:200% 100%}
+      @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 
-      .swiper{padding:40px 0 60px;margin:0 -20px}
-      .swiper-slide{width:auto;display:flex;justify-content:center;padding:0 10px}
-      .service-card{background:linear-gradient(135deg,var(--secondary) 0%,#fff 100%);padding:40px;border-radius:20px;border:2px solid var(--primary);min-width:280px;max-width:380px;box-shadow:0 10px 40px rgba(0,0,0,0.06);transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden}
-      .service-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200px;height:200px;background:var(--accent);opacity:0.05;border-radius:50%;transition:all 0.5s ease}
-      .service-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.15);border-color:var(--accent)}
-      .service-card:hover::before{top:-25%;right:-25%;transform:scale(1.5)}
-      .service-card h3{color:var(--primary);margin-bottom:16px;font-size:1.5rem;font-weight:700}
-      .service-card p{color:#64748b;font-size:1rem;line-height:1.6}
+      section h2{font-size:3.2rem;color:var(--dark);margin-bottom:20px;text-align:center;font-weight:900;position:relative;letter-spacing:-1px}
+      section .section-subtitle{text-align:center;font-size:1.2rem;color:#64748b;max-width:700px;margin:0 auto 60px;line-height:1.7}
+      section h2::after{content:'';display:block;width:100px;height:5px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:10px;margin:20px auto 0}
+      section p{font-size:1.2rem;color:#475569;max-width:900px;margin:0 auto 40px;line-height:1.9}
 
-      .swiper-button-next,.swiper-button-prev{color:var(--primary);width:50px;height:50px;background:#fff;border-radius:50%;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
-      .swiper-button-next:after,.swiper-button-prev:after{font-size:20px;font-weight:900}
-      .swiper-pagination-bullet{background:var(--primary);opacity:0.3;width:12px;height:12px}
-      .swiper-pagination-bullet-active{opacity:1;width:32px;border-radius:6px}
+      .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin:60px 0;text-align:center}
+      .stat-item{padding:40px;background:linear-gradient(135deg,var(--secondary),#fff);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.05);transition:all 0.4s}
+      .stat-item:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,0,0,0.12)}
+      .stat-number{font-size:3rem;font-weight:900;color:var(--primary);margin-bottom:10px}
+      .stat-label{font-size:1.1rem;color:#64748b;font-weight:600}
 
-      .contact-info p{margin:12px 0;font-size:1.1rem;color:#475569}
-      .contact-info a{color:var(--primary);text-decoration:none;font-weight:600;transition:color 0.3s}
-      .contact-info a:hover{color:var(--accent)}
+      .swiper{padding:60px 0 80px}
+      .swiper-slide{display:flex;justify-content:center}
+      .service-card{background:#fff;padding:50px 40px;border-radius:24px;border:2px solid #e2e8f0;min-width:320px;max-width:420px;box-shadow:0 10px 50px rgba(0,0,0,0.08);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden}
+      .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transition:transform 0.5s}
+      .service-card:hover::before{transform:scaleX(1)}
+      .service-card:hover{transform:translateY(-15px) scale(1.02);box-shadow:0 25px 70px rgba(0,0,0,0.15);border-color:var(--primary)}
+      .service-icon{width:70px;height:70px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:2rem;color:#fff}
+      .service-card h3{color:var(--dark);margin-bottom:16px;font-size:1.7rem;font-weight:800}
+      .service-card p{color:#64748b;font-size:1.05rem;line-height:1.7;margin:0}
 
-      .social-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-      .social-links a{font-size:2rem;color:var(--primary);text-decoration:none;width:60px;height:60px;display:inline-flex;align-items:center;justify-content:center;background:var(--secondary);border-radius:50%;transition:all 0.3s ease;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
-      .social-links a:hover{transform:translateY(-5px) scale(1.1);background:var(--primary);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+      .swiper-button-next,.swiper-button-prev{color:#fff;width:55px;height:55px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;box-shadow:0 8px 25px rgba(0,0,0,0.2);transition:all 0.3s}
+      .swiper-button-next:hover,.swiper-button-prev:hover{transform:scale(1.1);box-shadow:0 12px 35px rgba(0,0,0,0.3)}
+      .swiper-button-next:after,.swiper-button-prev:after{font-size:22px;font-weight:900}
+      .swiper-pagination-bullet{background:var(--primary);opacity:0.3;width:14px;height:14px;transition:all 0.3s}
+      .swiper-pagination-bullet-active{opacity:1;width:40px;border-radius:7px;background:linear-gradient(90deg,var(--primary),var(--accent))}
 
-      footer{text-align:center;padding:60px 20px;background:linear-gradient(135deg,var(--dark) 0%,var(--primary) 100%);color:rgba(255,255,255,0.9);font-size:1rem;margin-top:80px}
+      .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
+      .contact-card{background:linear-gradient(135deg,var(--secondary),#fff);padding:40px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.06);transition:all 0.4s}
+      .contact-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,0.12)}
+      .contact-info p{margin:16px 0;font-size:1.15rem;color:#475569;display:flex;align-items:center;gap:12px}
+      .contact-info a{color:var(--primary);text-decoration:none;font-weight:700;transition:all 0.3s}
+      .contact-info a:hover{color:var(--accent);transform:translateX(5px);display:inline-block}
+
+      .social-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+      .social-links a{font-size:1.8rem;color:#fff;text-decoration:none;width:70px;height:70px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;transition:all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);box-shadow:0 8px 25px rgba(0,0,0,0.15);position:relative}
+      .social-links a::after{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--primary));opacity:0;transition:opacity 0.4s}
+      .social-links a:hover{transform:translateY(-10px) scale(1.15) rotate(-10deg);box-shadow:0 15px 40px rgba(0,0,0,0.25)}
+      .social-links a:hover::after{opacity:1}
+
+      footer{background:linear-gradient(135deg,var(--dark) 0%,#1e293b 100%);color:rgba(255,255,255,0.9);padding:80px 5% 40px;margin-top:120px;position:relative}
+      footer::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent),var(--primary));animation:shimmer 3s linear infinite;background-size:200% 100%}
+      .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:50px;max-width:1400px;margin:0 auto 60px}
+      .footer-section h3{color:#fff;font-size:1.4rem;margin-bottom:20px;font-weight:800}
+      .footer-section p,.footer-section a{color:rgba(255,255,255,0.8);text-decoration:none;display:block;margin:12px 0;transition:all 0.3s;line-height:1.8}
+      .footer-section a:hover{color:var(--accent);transform:translateX(5px)}
+      .footer-bottom{text-align:center;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:0.95rem}
+      .footer-logo{font-size:1.8rem;font-weight:900;color:var(--accent);margin-bottom:16px}
 
       @media(max-width:768px){
-        header h1{font-size:2.5rem}
-        section h2{font-size:2rem}
-        .service-card{min-width:240px}
+        nav ul{display:none}
+        header h1{font-size:2.8rem}
+        section h2{font-size:2.2rem}
+        .service-card{min-width:280px}
+        .footer-content{grid-template-columns:1fr}
       }
     `,
           theme2: `
       :root{--primary:${primary};--secondary:${secondary};--accent:${accent};--dark:${dark}}
       *{margin:0;padding:0;box-sizing:border-box}
-      body{font-family:'Inter',-apple-system,sans-serif;background:var(--secondary);color:#1e293b;scroll-behavior:smooth;overflow-x:hidden}
+      body{font-family:'Poppins','Inter',-apple-system,sans-serif;background:#fff;color:#1e293b;scroll-behavior:smooth;overflow-x:hidden}
 
-      header{background:linear-gradient(135deg,var(--primary) 0%,var(--dark) 100%);padding:100px 20px 80px;text-align:center;position:relative;overflow:hidden}
-      header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom center/cover no-repeat}
+      nav{position:absolute;top:0;left:0;right:0;padding:24px 6%;z-index:100;display:flex;justify-content:space-between;align-items:center}
+      nav .logo{font-size:1.6rem;font-weight:900;color:#fff;text-decoration:none;text-shadow:0 2px 10px rgba(0,0,0,0.2)}
+      nav ul{display:flex;gap:40px;list-style:none}
+      nav ul li a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;transition:all 0.3s;font-size:1rem}
+      nav ul li a:hover{color:#fff;transform:translateY(-2px)}
+      .nav-cta{background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);padding:12px 28px;border-radius:50px;border:1px solid rgba(255,255,255,0.3)}
+      .nav-cta:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px)}
 
-      header img{width:140px;height:140px;border-radius:50%;border:5px solid rgba(255,255,255,0.95);margin-bottom:24px;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:pulse 2s infinite ease-in-out}
-      @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+      header{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,var(--primary),var(--dark));overflow:hidden;padding:100px 5%}
+      header::before{content:'';position:absolute;width:100%;height:100%;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom center/cover no-repeat;opacity:0.8}
+      .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1300px;align-items:center;text-align:left}
+      .hero-text{animation:slideRight 1s ease-out}
+      @keyframes slideRight{from{transform:translateX(-80px);opacity:0}to{transform:translateX(0);opacity:1}}
+      header img{width:180px;height:180px;border-radius:30px;border:6px solid rgba(255,255,255,0.2);box-shadow:0 30px 90px rgba(0,0,0,0.5);animation:fadeInScale 1.2s ease-out;margin:0 auto 40px;display:block}
+      @keyframes fadeInScale{0%{transform:scale(0.8) translateY(30px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
 
-      header h1{font-size:3.5rem;color:#fff;margin-bottom:12px;font-weight:800;text-shadow:0 4px 20px rgba(0,0,0,0.3);animation:fadeIn 1s ease-out}
-      @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+      header h1{font-size:5rem;color:#fff;margin-bottom:24px;font-weight:900;line-height:1;letter-spacing:-2px}
+      header h3{font-size:1.6rem;color:rgba(255,255,255,0.9);margin-bottom:48px;line-height:1.6;font-weight:400}
+      .hero-buttons{display:flex;gap:20px;flex-wrap:wrap}
+      .cta-btn{background:#fff;color:var(--primary);padding:18px 40px;border-radius:12px;font-weight:700;text-decoration:none;transition:all 0.4s;font-size:1.1rem;box-shadow:0 10px 40px rgba(0,0,0,0.2)}
+      .cta-btn:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.3);background:var(--accent);color:#fff}
+      .cta-btn.secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.4)}
+      .cta-btn.secondary:hover{background:rgba(255,255,255,0.15);border-color:#fff}
 
-      header h3{font-size:1.4rem;color:rgba(255,255,255,0.9);margin-bottom:32px;font-weight:400;animation:fadeIn 1s ease-out 0.3s backwards}
+      .wave-divider{position:absolute;bottom:0;left:0;width:100%;height:100px;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="%23ffffff" d="M0,32L48,37.3C96,43,192,53,288,58.7C384,64,480,64,576,58.7C672,53,768,43,864,48C960,53,1056,75,1152,74.7C1248,75,1344,53,1392,42.7L1440,32L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z"></path></svg>') no-repeat center/cover}
 
-      .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeIn 1s ease-out 0.6s backwards}
-      .cta-btn{background:#fff;color:var(--primary);padding:16px 36px;border-radius:50px;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,0.2);transition:all 0.3s ease;font-size:1.05rem}
-      .cta-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 15px 40px rgba(0,0,0,0.3);background:var(--accent);color:#fff}
-
-      .animate-scroll{opacity:0;transform:translateY(50px);transition:all 0.9s cubic-bezier(0.16,1,0.3,1)}
+      .animate-scroll{opacity:0;transform:translateY(60px);transition:all 1s cubic-bezier(0.16,1,0.3,1)}
       .animate-scroll.visible{opacity:1;transform:translateY(0)}
 
-      section{padding:80px 20px;max-width:1200px;margin:60px auto;background:#fff;border-radius:24px;box-shadow:0 10px 60px rgba(0,0,0,0.08);position:relative;overflow:hidden}
-      section::before{content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--accent),var(--primary));background-size:200% 100%;animation:gradientMove 3s linear infinite}
-      @keyframes gradientMove{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-      section h2{font-size:2.5rem;color:var(--dark);margin-bottom:48px;text-align:center;font-weight:800;position:relative;padding-bottom:20px}
-      section h2::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100px;height:4px;background:var(--accent);border-radius:2px}
-      section p{font-size:1.15rem;color:#475569;line-height:1.8;max-width:800px;margin:0 auto}
+      section{padding:120px 6%;position:relative}
+      section.dark-bg{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff}
+      section.light-bg{background:#f8fafc}
+      section h2{font-size:3.5rem;margin-bottom:24px;font-weight:900;letter-spacing:-1px}
+      section .section-subtitle{font-size:1.3rem;color:#64748b;margin-bottom:70px;line-height:1.7;max-width:700px}
+      section.dark-bg .section-subtitle{color:rgba(255,255,255,0.7)}
+      section p{font-size:1.2rem;line-height:2;max-width:900px}
 
-      .swiper{padding:40px 0 60px;position:relative}
+      .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-top:60px}
+      .feature-box{background:#fff;padding:50px 40px;border-radius:20px;box-shadow:0 15px 60px rgba(0,0,0,0.08);transition:all 0.5s;border-left:5px solid var(--primary)}
+      .feature-box:hover{transform:translateY(-12px);box-shadow:0 25px 80px rgba(0,0,0,0.15);border-left-width:8px}
+      .feature-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;margin-bottom:28px;box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+      .feature-box h3{font-size:1.8rem;margin-bottom:16px;color:var(--dark);font-weight:800}
+      .feature-box p{font-size:1.05rem;color:#64748b;line-height:1.8;margin:0}
+
+      .swiper{padding:60px 0 90px}
       .swiper-slide{display:flex;justify-content:center}
-      .service-card{background:linear-gradient(135deg,#fff 0%,var(--secondary) 100%);padding:40px;border-radius:20px;border:2px solid transparent;background-clip:padding-box;position:relative;box-shadow:0 10px 40px rgba(0,0,0,0.06);transition:all 0.4s ease;min-width:300px;max-width:350px}
-      .service-card::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:20px;z-index:-1;opacity:0;transition:opacity 0.4s ease}
-      .service-card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 20px 60px rgba(0,0,0,0.12)}
+      .service-card{background:#fff;padding:50px 40px;border-radius:24px;box-shadow:0 15px 60px rgba(0,0,0,0.1);min-width:340px;max-width:400px;transition:all 0.5s;position:relative;overflow:hidden}
+      .service-card::before{content:'';position:absolute;inset:-3px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:24px;z-index:-1;opacity:0;transition:opacity 0.5s}
+      .service-card:hover{transform:scale(1.05) rotate(-2deg);box-shadow:0 30px 90px rgba(0,0,0,0.2)}
       .service-card:hover::before{opacity:1}
-      .service-card h3{color:var(--primary);font-size:1.6rem;margin-bottom:16px;font-weight:700}
-      .service-card p{color:#64748b;font-size:1rem;line-height:1.7}
+      .service-card h3{font-size:1.8rem;color:var(--dark);margin-bottom:20px;font-weight:800}
+      .service-card p{font-size:1.05rem;color:#64748b;line-height:1.8;margin:0}
 
-      .swiper-button-next,.swiper-button-prev{color:var(--primary);background:#fff;width:50px;height:50px;border-radius:50%;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:all 0.3s}
-      .swiper-button-next:hover,.swiper-button-prev:hover{background:var(--primary);color:#fff;transform:scale(1.1)}
-      .swiper-button-next:after,.swiper-button-prev:after{font-size:20px;font-weight:900}
-      .swiper-pagination-bullet{background:var(--primary);opacity:0.3;width:12px;height:12px;transition:all 0.3s}
-      .swiper-pagination-bullet-active{opacity:1;width:36px;border-radius:6px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+      .swiper-button-next,.swiper-button-prev{color:#fff;background:var(--primary);width:60px;height:60px;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,0.2);transition:all 0.3s}
+      .swiper-button-next:hover,.swiper-button-prev:hover{background:var(--dark);transform:scale(1.15)}
+      .swiper-button-next:after,.swiper-button-prev:after{font-size:24px;font-weight:900}
+      .swiper-pagination-bullet{background:var(--primary);opacity:0.3;width:15px;height:15px}
+      .swiper-pagination-bullet-active{opacity:1;width:45px;border-radius:8px;background:var(--primary)}
 
-      .contact-info{background:var(--secondary);padding:32px;border-radius:16px;margin-bottom:24px}
-      .contact-info p{margin:16px 0;font-size:1.1rem;color:#475569;display:flex;align-items:center;gap:8px}
-      .contact-info a{color:var(--primary);text-decoration:none;font-weight:600;transition:color 0.3s}
-      .contact-info a:hover{color:var(--accent)}
+      .contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+      .contact-card{background:linear-gradient(135deg,var(--secondary),#fff);padding:50px;border-radius:24px;box-shadow:0 15px 60px rgba(0,0,0,0.08);transition:all 0.4s}
+      .contact-card:hover{transform:translateY(-10px);box-shadow:0 25px 80px rgba(0,0,0,0.15)}
+      .contact-info p{margin:24px 0;font-size:1.2rem;color:#475569;display:flex;align-items:center;gap:16px}
+      .contact-info a{color:var(--primary);text-decoration:none;font-weight:700;transition:all 0.3s}
+      .contact-info a:hover{color:var(--accent);transform:translateX(8px);display:inline-block}
 
-      .social-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:32px}
-      .social-links a{font-size:2.2rem;color:var(--primary);width:70px;height:70px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fff 0%,var(--secondary) 100%);border-radius:50%;transition:all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);box-shadow:0 6px 20px rgba(0,0,0,0.1);text-decoration:none}
-      .social-links a:hover{transform:translateY(-8px) rotate(360deg);background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 12px 30px rgba(0,0,0,0.2)}
+      .social-links{display:flex;gap:24px;flex-wrap:wrap;margin-top:48px}
+      .social-links a{font-size:2rem;color:#fff;width:80px;height:80px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:20px;transition:all 0.5s;box-shadow:0 10px 30px rgba(0,0,0,0.15);text-decoration:none}
+      .social-links a:hover{transform:translateY(-12px) rotate(5deg);box-shadow:0 20px 50px rgba(0,0,0,0.25);background:linear-gradient(135deg,var(--accent),var(--dark))}
 
-      footer{background:linear-gradient(135deg,var(--dark) 0%,var(--primary) 100%);color:rgba(255,255,255,0.95);text-align:center;padding:60px 20px;margin-top:80px;font-size:1.05rem}
+      footer{background:#0f172a;color:rgba(255,255,255,0.9);padding:100px 6% 50px;position:relative}
+      footer::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--primary),var(--accent),var(--primary));animation:shimmer 3s linear infinite;background-size:200% 100%}
+      @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+      .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:80px}
+      .footer-col h3{color:#fff;font-size:1.5rem;margin-bottom:24px;font-weight:800}
+      .footer-col p,.footer-col a{color:rgba(255,255,255,0.7);text-decoration:none;display:block;margin:14px 0;transition:all 0.3s;line-height:1.8;font-size:1rem}
+      .footer-col a:hover{color:var(--accent);transform:translateX(8px)}
+      .footer-brand{font-size:2rem;font-weight:900;color:var(--accent);margin-bottom:20px}
+      .footer-divider{height:1px;background:rgba(255,255,255,0.1);margin:40px 0}
+      .footer-bottom{display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.6);font-size:0.95rem}
 
-      @media(max-width:768px){
-        header h1{font-size:2.5rem}
-        section h2{font-size:2rem}
-        .service-card{min-width:260px}
+      @media(max-width:1024px){
+        .hero-grid{grid-template-columns:1fr;text-align:center}
+        .hero-text{text-align:center}
+        .hero-buttons{justify-content:center}
+        nav ul{display:none}
+        header h1{font-size:3.5rem}
+        .contact-wrapper,.footer-grid{grid-template-columns:1fr}
       }
     `,
           theme3: `
       :root{--primary:${primary};--secondary:${secondary};--accent:${accent};--dark:${dark}}
       *{margin:0;padding:0;box-sizing:border-box}
-      body{font-family:'Inter',-apple-system,sans-serif;background:var(--secondary);color:#1e293b;scroll-behavior:smooth;overflow-x:hidden}
+      body{font-family:'Space Grotesk','Inter',sans-serif;background:#000;color:#fff;scroll-behavior:smooth;overflow-x:hidden}
 
-      header{background:linear-gradient(135deg,var(--dark) 0%,var(--primary) 50%,var(--accent) 100%);padding:100px 20px 80px;text-align:center;position:relative;overflow:hidden}
-      header::before,header::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,0.1)}
-      header::before{top:-100px;right:-100px;width:400px;height:400px;animation:rotate 25s linear infinite}
-      header::after{bottom:-150px;left:-150px;width:500px;height:500px;animation:rotate 30s linear infinite reverse}
-      @keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+      nav{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.9);backdrop-filter:blur(20px);padding:20px 7%;z-index:100;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center}
+      nav .logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+      nav ul{display:flex;gap:48px;list-style:none}
+      nav ul li a{color:rgba(255,255,255,0.8);text-decoration:none;font-weight:600;transition:all 0.3s;font-size:1rem;position:relative}
+      nav ul li a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s}
+      nav ul li a:hover{color:#fff}
+      nav ul li a:hover::after{width:100%}
+      .nav-cta{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff!important;padding:12px 32px;border-radius:8px;transition:all 0.3s}
+      .nav-cta:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(249,115,22,0.4)}
 
-      header img{width:150px;height:150px;border-radius:50%;border:5px solid #fff;margin-bottom:24px;box-shadow:0 20px 70px rgba(0,0,0,0.4);position:relative;z-index:2;animation:bounceIn 1s ease-out}
-      @keyframes bounceIn{0%{transform:scale(0.3);opacity:0}50%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+      header{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;padding:120px 7% 80px}
+      header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(249,115,22,0.15),transparent 50%),radial-gradient(circle at 80% 70%,rgba(234,88,12,0.12),transparent 50%);animation:pulse 8s ease-in-out infinite}
+      @keyframes pulse{0%,100%{opacity:0.5}50%{opacity:1}}
+      .grid-background{position:absolute;inset:0;background-image:linear-gradient(rgba(249,115,22,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(249,115,22,0.05) 1px,transparent 1px);background-size:80px 80px;animation:gridMove 20s linear infinite}
+      @keyframes gridMove{0%{transform:translate(0,0)}100%{transform:translate(80px,80px)}}
 
-      header h1{font-size:4rem;color:#fff;margin-bottom:16px;font-weight:900;text-shadow:0 4px 30px rgba(0,0,0,0.3);position:relative;z-index:2;animation:slideIn 0.8s ease-out}
-      @keyframes slideIn{from{transform:translateX(-100px);opacity:0}to{transform:translateX(0);opacity:1}}
+      .hero-content{position:relative;z-index:2;text-align:center;max-width:1000px}
+      header img{width:200px;height:200px;border-radius:20px;border:3px solid var(--accent);margin-bottom:48px;box-shadow:0 0 80px rgba(249,115,22,0.6),0 30px 90px rgba(0,0,0,0.8);animation:float 6s ease-in-out infinite;position:relative}
+      @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(3deg)}}
+      header img::before{content:'';position:absolute;inset:-20px;background:linear-gradient(135deg,var(--primary),var(--accent));filter:blur(40px);opacity:0.5;z-index:-1}
 
-      header h3{font-size:1.5rem;color:rgba(255,255,255,0.95);margin-bottom:32px;font-weight:400;position:relative;z-index:2;animation:slideIn 0.8s ease-out 0.2s backwards;text-shadow:0 2px 10px rgba(0,0,0,0.2)}
+      header h1{font-size:6rem;color:#fff;margin-bottom:28px;font-weight:900;letter-spacing:-3px;line-height:0.95;background:linear-gradient(135deg,#fff,var(--accent),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:slideUp 1s ease-out;background-size:200% auto;animation:gradientShift 5s ease infinite}
+      @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+      @keyframes slideUp{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
 
-      .hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;animation:slideIn 0.8s ease-out 0.4s backwards}
-      .cta-btn{background:#fff;color:var(--primary);padding:18px 40px;border-radius:50px;font-weight:700;text-decoration:none;box-shadow:0 12px 35px rgba(0,0,0,0.25);transition:all 0.3s cubic-bezier(0.68,-0.55,0.265,1.55);font-size:1.1rem;border:2px solid transparent}
-      .cta-btn:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 18px 50px rgba(0,0,0,0.35);background:transparent;border-color:#fff;color:#fff}
+      header h3{font-size:1.8rem;color:rgba(255,255,255,0.7);margin-bottom:56px;line-height:1.6;font-weight:400;animation:fadeIn 1s ease-out 0.3s backwards}
+      @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-      .animate-scroll{opacity:0;transform:scale(0.9) translateY(30px);transition:all 1s cubic-bezier(0.34,1.56,0.64,1)}
-      .animate-scroll.visible{opacity:1;transform:scale(1) translateY(0)}
+      .hero-buttons{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;animation:fadeIn 1s ease-out 0.6s backwards}
+      .cta-btn{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;padding:20px 48px;border-radius:12px;font-weight:700;text-decoration:none;transition:all 0.4s;font-size:1.15rem;box-shadow:0 10px 40px rgba(249,115,22,0.3);position:relative;overflow:hidden;border:2px solid transparent}
+      .cta-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--dark));opacity:0;transition:opacity 0.4s}
+      .cta-btn:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 20px 60px rgba(249,115,22,0.5)}
+      .cta-btn:hover::before{opacity:1}
+      .cta-btn span{position:relative;z-index:1}
+      .cta-btn.secondary{background:transparent;border:2px solid var(--accent);box-shadow:none}
+      .cta-btn.secondary:hover{background:rgba(249,115,22,0.1);border-color:var(--primary)}
 
-      section{padding:80px 20px;max-width:1200px;margin:60px auto;background:#fff;border-radius:30px;box-shadow:0 15px 70px rgba(0,0,0,0.1);position:relative;overflow:hidden}
-      section::before{content:'';position:absolute;top:-2px;left:-2px;right:-2px;bottom:-2px;background:linear-gradient(135deg,var(--primary),var(--accent),var(--dark));border-radius:30px;z-index:-1;opacity:0.1}
-      section h2{font-size:2.8rem;color:var(--dark);margin-bottom:52px;text-align:center;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative}
-      section h2::before{content:'';position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);width:120px;height:5px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-      section p{font-size:1.2rem;color:#475569;line-height:1.9;max-width:850px;margin:0 auto}
+      .animate-scroll{opacity:0;transform:translateY(80px);transition:all 1.2s cubic-bezier(0.16,1,0.3,1)}
+      .animate-scroll.visible{opacity:1;transform:translateY(0)}
 
-      .swiper{padding:50px 0 70px}
+      section{padding:140px 7%;position:relative;background:#000}
+      section.gradient-bg{background:radial-gradient(circle at 50% 0%,rgba(249,115,22,0.08),#000 60%)}
+      section h2{font-size:4rem;color:#fff;margin-bottom:28px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+      section .section-subtitle{font-size:1.4rem;color:rgba(255,255,255,0.6);margin-bottom:80px;line-height:1.8;max-width:800px}
+      section p{font-size:1.25rem;color:rgba(255,255,255,0.8);line-height:2;max-width:1000px}
+
+      .tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;margin-top:80px}
+      .tech-card{background:linear-gradient(135deg,rgba(249,115,22,0.1),rgba(234,88,12,0.05));padding:60px 40px;border-radius:24px;border:1px solid rgba(249,115,22,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.5);transition:all 0.5s;position:relative;overflow:hidden}
+      .tech-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,115,22,0.2),transparent);opacity:0;transition:opacity 0.5s}
+      .tech-card:hover{transform:translateY(-16px);border-color:var(--accent);box-shadow:0 30px 80px rgba(249,115,22,0.3)}
+      .tech-card:hover::before{opacity:1}
+      .tech-icon{width:90px;height:90px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff;margin-bottom:32px;box-shadow:0 15px 40px rgba(249,115,22,0.4);position:relative;z-index:1}
+      .tech-card h3{font-size:2rem;color:#fff;margin-bottom:20px;font-weight:800;position:relative;z-index:1}
+      .tech-card p{font-size:1.1rem;color:rgba(255,255,255,0.7);line-height:1.8;margin:0;position:relative;z-index:1}
+
+      .swiper{padding:80px 0 100px}
       .swiper-slide{display:flex;justify-content:center}
-      .service-card{background:linear-gradient(135deg,#fff 0%,var(--secondary) 100%);padding:45px;border-radius:24px;box-shadow:0 12px 45px rgba(0,0,0,0.08);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);min-width:310px;max-width:360px;position:relative;overflow:hidden;border:3px solid transparent}
-      .service-card::before{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--primary),var(--accent));transition:top 0.5s ease;z-index:0}
-      .service-card:hover{transform:translateY(-15px) scale(1.03);box-shadow:0 25px 70px rgba(0,0,0,0.18);border-color:var(--accent)}
-      .service-card:hover::before{top:0}
-      .service-card:hover h3,.service-card:hover p{color:#fff;position:relative;z-index:1}
-      .service-card h3{color:var(--primary);font-size:1.7rem;margin-bottom:18px;font-weight:800;position:relative;z-index:1;transition:color 0.3s}
-      .service-card p{color:#64748b;font-size:1.05rem;line-height:1.7;position:relative;z-index:1;transition:color 0.3s}
+      .service-card{background:rgba(255,255,255,0.03);padding:60px 45px;border-radius:28px;border:1px solid rgba(249,115,22,0.3);min-width:360px;max-width:420px;box-shadow:0 20px 70px rgba(0,0,0,0.6);transition:all 0.6s;position:relative;backdrop-filter:blur(10px)}
+      .service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--primary),var(--accent));opacity:0;transition:opacity 0.6s;border-radius:28px;z-index:0}
+      .service-card:hover{transform:translateY(-20px) scale(1.05);border-color:var(--accent);box-shadow:0 40px 100px rgba(249,115,22,0.4)}
+      .service-card:hover::before{opacity:0.15}
+      .service-card h3{font-size:2rem;color:#fff;margin-bottom:20px;font-weight:800;position:relative;z-index:1}
+      .service-card p{font-size:1.1rem;color:rgba(255,255,255,0.7);line-height:1.9;margin:0;position:relative;z-index:1}
 
-      .swiper-button-next,.swiper-button-prev{color:#fff;background:linear-gradient(135deg,var(--primary),var(--accent));width:55px;height:55px;border-radius:50%;box-shadow:0 6px 25px rgba(0,0,0,0.2);transition:all 0.3s}
-      .swiper-button-next:hover,.swiper-button-prev:hover{transform:scale(1.15);box-shadow:0 10px 35px rgba(0,0,0,0.3)}
-      .swiper-button-next:after,.swiper-button-prev:after{font-size:22px;font-weight:900}
-      .swiper-pagination-bullet{background:var(--primary);opacity:0.3;width:14px;height:14px;transition:all 0.3s}
-      .swiper-pagination-bullet-active{opacity:1;width:40px;border-radius:7px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+      .swiper-button-next,.swiper-button-prev{color:#000;background:linear-gradient(135deg,var(--primary),var(--accent));width:65px;height:65px;border-radius:16px;box-shadow:0 15px 40px rgba(249,115,22,0.4);transition:all 0.4s}
+      .swiper-button-next:hover,.swiper-button-prev:hover{transform:scale(1.2);box-shadow:0 20px 50px rgba(249,115,22,0.6)}
+      .swiper-button-next:after,.swiper-button-prev:after{font-size:26px;font-weight:900}
+      .swiper-pagination-bullet{background:var(--accent);opacity:0.3;width:16px;height:16px}
+      .swiper-pagination-bullet-active{opacity:1;width:50px;border-radius:8px;background:linear-gradient(90deg,var(--primary),var(--accent))}
 
-      .contact-info{background:linear-gradient(135deg,var(--secondary),#fff);padding:40px;border-radius:20px;margin-bottom:32px;box-shadow:0 8px 30px rgba(0,0,0,0.06)}
-      .contact-info p{margin:18px 0;font-size:1.15rem;color:#475569;display:flex;align-items:center;gap:12px}
-      .contact-info a{color:var(--primary);text-decoration:none;font-weight:700;transition:all 0.3s}
-      .contact-info a:hover{color:var(--accent);transform:translateX(5px);display:inline-block}
+      .contact-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;padding:140px 7%;background:radial-gradient(circle at 80% 50%,rgba(249,115,22,0.1),#000 70%)}
+      .contact-details{background:rgba(255,255,255,0.03);padding:60px;border-radius:28px;border:1px solid rgba(249,115,22,0.3);box-shadow:0 20px 70px rgba(0,0,0,0.6);transition:all 0.5s;backdrop-filter:blur(10px)}
+      .contact-details:hover{transform:translateY(-12px);border-color:var(--accent);box-shadow:0 30px 90px rgba(249,115,22,0.3)}
+      .contact-info p{margin:28px 0;font-size:1.3rem;color:rgba(255,255,255,0.8);display:flex;align-items:center;gap:20px}
+      .contact-info a{color:var(--accent);text-decoration:none;font-weight:700;transition:all 0.3s}
+      .contact-info a:hover{color:var(--primary);transform:translateX(10px);display:inline-block}
 
-      .social-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:36px}
-      .social-links a{font-size:2.4rem;color:#fff;width:75px;height:75px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;transition:all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);box-shadow:0 8px 25px rgba(0,0,0,0.15);text-decoration:none;position:relative}
-      .social-links a::before{content:'';position:absolute;inset:-4px;background:linear-gradient(135deg,var(--accent),var(--primary));border-radius:50%;z-index:-1;opacity:0;transition:opacity 0.3s}
-      .social-links a:hover{transform:translateY(-10px) scale(1.15) rotate(10deg);box-shadow:0 15px 40px rgba(0,0,0,0.25)}
+      .social-links{display:flex;gap:28px;flex-wrap:wrap;margin-top:60px}
+      .social-links a{font-size:2.2rem;color:#000;width:90px;height:90px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:20px;transition:all 0.5s;box-shadow:0 15px 50px rgba(249,115,22,0.3);text-decoration:none;position:relative}
+      .social-links a::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--dark));opacity:0;transition:opacity 0.4s;border-radius:20px}
+      .social-links a:hover{transform:translateY(-12px) rotate(-5deg) scale(1.15);box-shadow:0 25px 70px rgba(249,115,22,0.5)}
       .social-links a:hover::before{opacity:1}
 
-      footer{background:linear-gradient(135deg,var(--dark) 0%,var(--primary) 50%,var(--accent) 100%);color:#fff;text-align:center;padding:70px 20px;margin-top:100px;font-size:1.1rem;box-shadow:0 -10px 40px rgba(0,0,0,0.1)}
+      footer{background:linear-gradient(180deg,#000,rgba(249,115,22,0.05));color:rgba(255,255,255,0.8);padding:120px 7% 60px;position:relative;border-top:1px solid rgba(249,115,22,0.2)}
+      footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+      .footer-mega{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:80px;margin-bottom:100px}
+      .footer-column h3{color:#fff;font-size:1.6rem;margin-bottom:28px;font-weight:900}
+      .footer-column p,.footer-column a{color:rgba(255,255,255,0.6);text-decoration:none;display:block;margin:16px 0;transition:all 0.3s;line-height:1.9;font-size:1.05rem}
+      .footer-column a:hover{color:var(--accent);transform:translateX(10px)}
+      .footer-brand{font-size:2.4rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:24px}
+      .footer-divider{height:1px;background:rgba(249,115,22,0.2);margin:60px 0}
+      .footer-end{display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.5);font-size:1rem}
 
-      @media(max-width:768px){
-        header h1{font-size:2.8rem}
-        section h2{font-size:2.2rem}
-        .service-card{min-width:270px}
+      @media(max-width:1024px){
+        .hero-grid,.contact-section,.footer-mega{grid-template-columns:1fr}
+        nav ul{display:none}
+        header h1{font-size:4rem}
+        section h2{font-size:3rem}
+        .service-card{min-width:300px}
       }
     `,
         };
 
         const layouts = {
           theme1: `
+      <nav>
+        <a href="#" class="logo">${brandName}</a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
       <header>
-        ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
-        <h1>${brandName}</h1>
-        ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
-        <div class="hero-buttons">
-          <a class="cta-btn" href="${links.website || "#"}" target="_blank">Visit Website</a>
-          <a class="cta-btn" href="mailto:${brandEmail || "#"}" target="_blank">Contact</a>
+        <div class="hero-content">
+          ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+          <h1>${brandName}</h1>
+          ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
+          <div class="hero-buttons">
+            <a class="cta-btn" href="${links.website || "#"}" target="_blank">Visit Website</a>
+            <a class="cta-btn secondary" href="mailto:${brandEmail || "#"}">Get in Touch</a>
+          </div>
         </div>
+        <div class="scroll-indicator"></div>
       </header>
-      <section id="about" class="animate-scroll"><h2>About Us</h2><p>${brandAbout}</p></section>
+      <section id="about" class="white-bg animate-scroll">
+        <h2>About Us</h2>
+        <p class="section-subtitle">Discover who we are and what drives us forward</p>
+        <p>${brandAbout}</p>
+        <div class="stats">
+          <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Happy Clients</div></div>
+          <div class="stat-item"><div class="stat-number">1000+</div><div class="stat-label">Projects Done</div></div>
+          <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Team Members</div></div>
+          <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Years Experience</div></div>
+        </div>
+      </section>
       <section id="services" class="animate-scroll">
         <h2>Our Services</h2>
+        <p class="section-subtitle">Comprehensive solutions tailored to your needs</p>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><div class="service-card"><h3>Digital Marketing</h3><p>Boost your online presence with our comprehensive digital marketing strategies.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Web Development</h3><p>Custom, responsive websites built with the latest technologies and best practices.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Brand Design</h3><p>Create a memorable brand identity that resonates with your target audience.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>SEO Optimization</h3><p>Improve your search rankings and drive more organic traffic to your site.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><div class="service-icon">💼</div><h3>Digital Marketing</h3><p>Boost your online presence with comprehensive digital marketing strategies that deliver results.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><div class="service-icon">💻</div><h3>Web Development</h3><p>Custom, responsive websites built with the latest technologies and industry best practices.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><div class="service-icon">🎨</div><h3>Brand Design</h3><p>Create a memorable brand identity that truly resonates with your target audience.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><div class="service-icon">📈</div><h3>SEO Optimization</h3><p>Improve your search rankings and drive more qualified organic traffic to your site.</p></div></div>
           </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
       </section>
-      <section id="contact" class="animate-scroll"><h2>Contact Us</h2>${contactHTML}${socialHTML}</section>
-      <footer>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</footer>
+      <section id="contact" class="white-bg animate-scroll">
+        <h2>Contact Us</h2>
+        <p class="section-subtitle">Let's start a conversation about your next project</p>
+        <div class="contact-grid">
+          <div class="contact-card">${contactHTML}</div>
+          <div class="contact-card">${socialHTML}</div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">${brandName}</div>
+            <p>${brandAbout.substring(0,120)}...</p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <p>${brandEmail || ""}</p>
+            <p>${brandMobile || ""}</p>
+          </div>
+        </div>
+        <div class="footer-bottom">&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</div>
+      </footer>
     `,
           theme2: `
+      <nav>
+        <a href="#" class="logo">${brandName}</a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
       <header>
-        ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
-        <h1>${brandName}</h1>
-        ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
-        <div class="hero-buttons">
-          <a class="cta-btn" href="${links.website || "#"}" target="_blank">Visit Website</a>
-          <a class="cta-btn" href="mailto:${brandEmail || "#"}" target="_blank">Contact</a>
+        <div class="hero-grid">
+          <div class="hero-text">
+            <h1>${brandName}</h1>
+            ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
+            <div class="hero-buttons">
+              <a class="cta-btn" href="${links.website || "#"}" target="_blank">Explore More</a>
+              <a class="cta-btn secondary" href="mailto:${brandEmail || "#"}">Let's Talk</a>
+            </div>
+          </div>
+          <div>
+            ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+          </div>
         </div>
+        <div class="wave-divider"></div>
       </header>
-      <section id="about" class="animate-scroll"><h2>About Us</h2><p>${brandAbout}</p></section>
-      <section id="services" class="animate-scroll">
+      <section id="about" class="light-bg animate-scroll">
+        <h2>About Us</h2>
+        <p class="section-subtitle">Building excellence through innovation and dedication</p>
+        <p>${brandAbout}</p>
+        <div class="feature-grid">
+          <div class="feature-box"><div class="feature-icon">🚀</div><h3>Innovation</h3><p>Cutting-edge solutions that push boundaries and drive success.</p></div>
+          <div class="feature-box"><div class="feature-icon">🎯</div><h3>Precision</h3><p>Meticulous attention to detail in every project we undertake.</p></div>
+          <div class="feature-box"><div class="feature-icon">⚡</div><h3>Speed</h3><p>Fast turnaround times without compromising on quality.</p></div>
+        </div>
+      </section>
+      <section id="services" class="dark-bg animate-scroll">
         <h2>Our Services</h2>
+        <p class="section-subtitle">Comprehensive solutions designed for your success</p>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><div class="service-card"><h3>Consulting</h3><p>Expert guidance to help your business reach its full potential.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Strategy</h3><p>Data-driven strategies tailored to your unique business goals.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Analytics</h3><p>Comprehensive insights to make informed business decisions.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Support</h3><p>24/7 dedicated support to ensure your success every step of the way.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Consulting</h3><p>Expert guidance to help your business reach its full potential and beyond.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Strategy</h3><p>Data-driven strategies perfectly tailored to your unique business goals.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Analytics</h3><p>Comprehensive insights that empower you to make informed decisions.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Support</h3><p>24/7 dedicated support ensuring your success every step of the way.</p></div></div>
           </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
       </section>
-      <section id="contact" class="animate-scroll"><h2>Contact Us</h2>${contactHTML}${socialHTML}</section>
-      <footer>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</footer>
+      <section id="contact" class="light-bg animate-scroll">
+        <h2>Contact Us</h2>
+        <p class="section-subtitle">Ready to start your project? Get in touch today</p>
+        <div class="contact-wrapper">
+          <div class="contact-card">${contactHTML}</div>
+          <div class="contact-card">${socialHTML}</div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-brand">${brandName}</div>
+            <p>${brandAbout.substring(0,150)}...</p>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h3>Services</h3>
+            <a href="#">Consulting</a>
+            <a href="#">Strategy</a>
+            <a href="#">Analytics</a>
+          </div>
+          <div class="footer-col">
+            <h3>Connect</h3>
+            <p>${brandEmail || ""}</p>
+            <p>${brandMobile || ""}</p>
+          </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+          <span>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</span>
+          <span>Crafted with excellence</span>
+        </div>
+      </footer>
     `,
           theme3: `
+      <nav>
+        <a href="#" class="logo">${brandName}</a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
       <header>
-        ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
-        <h1>${brandName}</h1>
-        ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
-        <div class="hero-buttons">
-          <a class="cta-btn" href="${links.website || "#"}" target="_blank">Visit Website</a>
-          <a class="cta-btn" href="mailto:${brandEmail || "#"}" target="_blank">Contact</a>
+        <div class="grid-background"></div>
+        <div class="hero-content">
+          ${logoURL ? `<img src="${logoURL}" alt="Logo">` : ""}
+          <h1>${brandName}</h1>
+          ${brandTagline ? `<h3>${brandTagline}</h3>` : ""}
+          <div class="hero-buttons">
+            <a class="cta-btn" href="${links.website || "#"}" target="_blank"><span>Discover More</span></a>
+            <a class="cta-btn secondary" href="mailto:${brandEmail || "#"}"><span>Start Project</span></a>
+          </div>
         </div>
       </header>
-      <section id="about" class="animate-scroll"><h2>About Us</h2><p>${brandAbout}</p></section>
+      <section id="about" class="gradient-bg animate-scroll">
+        <h2>About Us</h2>
+        <p class="section-subtitle">Pioneering the future with bold ideas and exceptional execution</p>
+        <p>${brandAbout}</p>
+        <div class="tech-grid">
+          <div class="tech-card"><div class="tech-icon">⚡</div><h3>Fast Delivery</h3><p>Lightning-fast project completion without sacrificing quality or attention to detail.</p></div>
+          <div class="tech-card"><div class="tech-icon">🎯</div><h3>Perfect Results</h3><p>Pixel-perfect execution that exceeds expectations and delivers measurable results.</p></div>
+          <div class="tech-card"><div class="tech-icon">🔒</div><h3>Secure & Reliable</h3><p>Enterprise-grade security and reliability you can trust for your most critical projects.</p></div>
+        </div>
+      </section>
       <section id="services" class="animate-scroll">
         <h2>Our Services</h2>
+        <p class="section-subtitle">Next-generation solutions powered by innovation and expertise</p>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><div class="service-card"><h3>Creative Design</h3><p>Stunning visuals that capture attention and communicate your message.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Brand Strategy</h3><p>Build a powerful brand that stands out in your industry.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Social Media</h3><p>Engage your audience across all major social platforms.</p></div></div>
-            <div class="swiper-slide"><div class="service-card"><h3>Content Creation</h3><p>Compelling content that tells your story and drives action.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Creative Design</h3><p>Stunning visuals that capture attention and powerfully communicate your unique message.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Brand Strategy</h3><p>Build a powerful brand identity that truly stands out in your competitive industry.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Social Media</h3><p>Engage and grow your audience effectively across all major social platforms.</p></div></div>
+            <div class="swiper-slide"><div class="service-card"><h3>Content Creation</h3><p>Compelling content that authentically tells your story and drives meaningful action.</p></div></div>
           </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
       </section>
-      <section id="contact" class="animate-scroll"><h2>Contact Us</h2>${contactHTML}${socialHTML}</section>
-      <footer>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</footer>
+      <section class="contact-section">
+        <div class="contact-details">
+          <h2>Contact Us</h2>
+          <p class="section-subtitle">Let's create something extraordinary together</p>
+          ${contactHTML}
+        </div>
+        <div class="contact-details">
+          <h2>Connect</h2>
+          <p class="section-subtitle">Follow us on social media</p>
+          ${socialHTML}
+        </div>
+      </section>
+      <footer>
+        <div class="footer-mega">
+          <div class="footer-column">
+            <div class="footer-brand">${brandName}</div>
+            <p>${brandAbout.substring(0,180)}...</p>
+          </div>
+          <div class="footer-column">
+            <h3>Company</h3>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <a href="#">Careers</a>
+          </div>
+          <div class="footer-column">
+            <h3>Services</h3>
+            <a href="#">Design</a>
+            <a href="#">Development</a>
+            <a href="#">Marketing</a>
+            <a href="#">Consulting</a>
+          </div>
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <p>${brandEmail || ""}</p>
+            <p>${brandMobile || ""}</p>
+            <p>${brandAddress || ""}</p>
+          </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-end">
+          <span>&copy; ${new Date().getFullYear()} ${brandName}. All rights reserved.</span>
+          <span>Made with passion and precision</span>
+        </div>
+      </footer>
     `,
         };
 
